@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Dentistry — A Proposal from ValGrow Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,340&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F7F4EC;
+    --white:#FFFFFF;
+    --ink:#191F1B;
+    --ink-soft:#59635C;
+    --ink-faint:#8B9289;
+    --teal:#0B5645;
+    --teal-deep:#083A2F;
+    --teal-mist:#E7F1EC;
+    --clay:#A85C34;
+    --clay-mist:#F6E9DE;
+    --border:#E2DCC9;
+    --border-soft:#EDE9DB;
+    --gold:#C79A4B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--ivory);
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+  .wrap{max-width:800px;margin:0 auto;padding:0 40px;}
+  .wide{max-width:980px;margin:0 auto;padding:0 40px;}
+  @media(max-width:600px){.wrap,.wide{padding:0 24px;}}
+
+  @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  .rise{animation:rise 0.9s cubic-bezier(.22,.61,.36,1) both;}
+  .rise-1{animation-delay:.05s;} .rise-2{animation-delay:.18s;} .rise-3{animation-delay:.31s;} .rise-4{animation-delay:.44s;}
+  @media (prefers-reduced-motion: reduce){ .rise{animation:none;} }
+
+  /* ===== Cover ===== */
+  .cover{
+    position:relative;
+    background:var(--teal-deep);
+    color:#EAF3EF;
+    padding:104px 40px 96px;
+    overflow:hidden;
+  }
+  .cover-rings{position:absolute;top:0;right:0;width:640px;height:640px;transform:translate(28%,-30%);opacity:0.5;pointer-events:none;}
+  .cover-inner{position:relative;max-width:980px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end;}
+  @media(max-width:800px){.cover-inner{grid-template-columns:1fr;}}
+  .eyebrow{
+    font-size:13px;
+    color:#9FCBB7;
+    margin-bottom:26px;
+    font-weight:500;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow .dash{width:22px;height:1px;background:#4C8C77;display:inline-block;}
+  .cover h1{
+    font-size:46px;
+    line-height:1.16;
+    color:#FFFFFF;
+    font-weight:500;
+    max-width:600px;
+  }
+  .cover .sub{
+    margin-top:22px;
+    font-size:17.5px;
+    color:#C9E1D6;
+    max-width:520px;
+    font-weight:400;
+  }
+  .cover-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:4px;
+    padding:26px 26px;
+  }
+  .cover-card .q{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:17px;
+    line-height:1.5;
+    color:#EAF3EF;
+  }
+  .cover-card .attr{margin-top:14px;font-size:13px;color:#9FCBB7;}
+  .cover .meta{
+    max-width:980px;margin:64px auto 0;
+    display:flex;gap:56px;flex-wrap:wrap;
+    border-top:1px solid rgba(255,255,255,0.16);
+    padding-top:26px;
+    font-size:13.5px;
+    color:#9FCBB7;
+  }
+  .cover .meta strong{display:block;color:#fff;font-weight:500;font-size:15px;margin-bottom:4px;font-family:'Fraunces',serif;}
+
+  /* ===== Section shell with rail number ===== */
+  section{padding:88px 0;}
+  section.white{background:var(--white);}
+  section.tint{background:var(--teal-mist);}
+  .shell{display:grid;grid-template-columns:64px 1fr;gap:0;}
+  @media(max-width:600px){.shell{grid-template-columns:1fr;}}
+  .rail-num{
+    font-family:'Fraunces',serif;
+    font-size:14px;
+    color:var(--ink-faint);
+    padding-top:6px;
+  }
+  @media(max-width:600px){.rail-num{padding-top:0;margin-bottom:18px;}}
+  .section-label{
+    font-size:13.5px;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:16px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  h2{font-size:31px;color:var(--ink);margin-bottom:24px;line-height:1.26;max-width:20ch;}
+  h3{font-size:19px;color:var(--ink);margin-bottom:9px;font-weight:500;}
+  p{color:var(--ink-soft);margin-bottom:16px;max-width:64ch;font-size:15.5px;}
+  p.lead{font-size:18.5px;color:var(--ink);max-width:56ch;line-height:1.6;}
+
+  /* ===== Problem list ===== */
+  .problem-list{margin-top:36px;display:flex;flex-direction:column;}
+  .problem-item{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    padding:26px 0;
+    border-top:1px solid var(--border);
+  }
+  @media(max-width:600px){.problem-item{grid-template-columns:1fr;gap:8px;}}
+  .problem-item:last-child{border-bottom:1px solid var(--border);}
+  .problem-item .tag{
+    font-size:12.5px;color:var(--clay);font-weight:600;padding-top:3px;
+    text-transform:uppercase;letter-spacing:0.05em;
+  }
+  .problem-item h3{margin-bottom:7px;}
+  .problem-item p{margin-bottom:0;}
+
+  /* ===== Layers ===== */
+  .layers{margin-top:38px;display:flex;flex-direction:column;}
+  .layer{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:26px;
+    padding:32px 0;
+    border-top:1px solid var(--border);
+  }
+  @media(max-width:600px){.layer{grid-template-columns:1fr;gap:10px;}}
+  .layer:last-child{border-bottom:1px solid var(--border);}
+  .layer .num{
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    color:var(--teal);
+    font-weight:500;
+    border:1px solid var(--teal);
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .layer h3{margin-bottom:9px;font-size:20px;}
+  .layer ul{margin:14px 0 0 0;color:var(--ink-soft);list-style:none;}
+  .layer li{margin-bottom:9px;padding-left:18px;position:relative;font-size:15px;}
+  .layer li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--teal);}
+
+  /* ===== Diagram ===== */
+  .diagram-wrap{background:var(--white);padding:72px 0;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);}
+  .diagram{display:flex;flex-direction:column;align-items:center;gap:0;}
+  .d-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;width:100%;}
+  .d-box{
+    border:1px solid var(--border);
+    background:var(--ivory);
+    border-radius:3px;
+    padding:18px 22px;
+    width:230px;
+    text-align:center;
+  }
+  .d-box.accent-teal{background:var(--teal-mist);border-color:#BFDBCE;}
+  .d-box.accent-clay{background:var(--clay-mist);border-color:#E3C3A9;}
+  .d-box.hub{background:var(--teal);border-color:var(--teal-deep);color:#fff;width:320px;padding:22px;}
+  .d-box .t{font-size:15px;font-weight:500;color:var(--ink);font-family:'Fraunces',serif;}
+  .d-box.hub .t{color:#fff;font-size:17px;}
+  .d-box .s{font-size:12.5px;color:var(--ink-soft);margin-top:4px;}
+  .d-box.hub .s{color:#BFE0D2;}
+  .d-arrow{width:1px;height:38px;background:var(--border);position:relative;}
+  .d-arrow::after{
+    content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
+    border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--border);
+  }
+  .d-caption{margin-top:30px;font-size:13.5px;color:var(--ink-soft);text-align:center;max-width:400px;font-style:italic;font-family:'Fraunces',serif;}
+
+  /* ===== Scenario ===== */
+  .scenario{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:38px;background:var(--border);border:1px solid var(--border);}
+  @media(max-width:680px){.scenario{grid-template-columns:1fr;}}
+  .scen-col{background:var(--white);padding:32px 30px;}
+  .scen-col .kicker{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;}
+  .scen-col.now .kicker{color:var(--clay);}
+  .scen-col.after .kicker{color:var(--teal);}
+  .scen-col h3{font-size:20px;margin-bottom:16px;}
+  .scen-col ol{margin-left:0;color:var(--ink-soft);list-style:none;counter-reset:s;}
+  .scen-col li{margin-bottom:16px;padding-left:30px;position:relative;font-size:14.8px;counter-increment:s;}
+  .scen-col li::before{
+    content:counter(s);
+    position:absolute;left:0;top:0;
+    width:19px;height:19px;border-radius:50%;
+    font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:600;
+  }
+  .scen-col.now li::before{background:var(--clay-mist);color:var(--clay);}
+  .scen-col.after li::before{background:var(--teal-mist);color:var(--teal);}
+
+  /* ===== Deliverables ===== */
+  .deliv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:36px;}
+  @media(max-width:680px){.deliv-grid{grid-template-columns:1fr;}}
+  .deliv-item{background:var(--white);padding:28px 26px;}
+  .deliv-item h3{font-size:17px;margin-bottom:8px;}
+  .deliv-item p{font-size:14.3px;margin-bottom:0;}
+
+  .addon{border:1px solid #E3C3A9;background:var(--clay-mist);border-radius:4px;padding:28px 30px;margin-top:32px;}
+  .addon .section-label{color:var(--clay);margin-bottom:12px;}
+  .addon p{color:#6B4227;}
+
+  /* ===== Why grid ===== */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px;}
+  @media(max-width:680px){.why-grid{grid-template-columns:1fr;}}
+  .why-item{border-top:2px solid var(--teal);padding-top:16px;}
+  .why-item h3{font-size:16.5px;}
+  .why-item p{font-size:14.3px;}
+
+  /* ===== CTA ===== */
+  .cta{background:var(--teal-deep);color:#EAF3EF;padding:96px 40px;position:relative;overflow:hidden;}
+  .cta-inner{max-width:800px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;}
+  @media(max-width:700px){.cta-inner{grid-template-columns:1fr;}}
+  .cta h2{color:#fff;max-width:420px;font-size:32px;}
+  .cta p{color:#C9E1D6;max-width:420px;}
+  .cta-panel{border-left:1px solid rgba(255,255,255,0.2);padding-left:40px;}
+  @media(max-width:700px){.cta-panel{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,0.2);padding-top:28px;}}
+  .cta-panel strong{display:block;font-size:19px;margin-bottom:6px;font-family:'Fraunces',serif;font-weight:500;color:#fff;}
+  .cta-panel span{font-size:14px;color:#9FCBB7;}
+
+  footer{padding:36px;text-align:center;font-size:12.5px;color:var(--ink-faint);background:var(--ivory);}
+
+  /* ===== Mobile ===== */
+  @media(max-width:600px){
+    body{font-size:15px;overflow-x:hidden;}
+    .cover{padding:64px 24px 56px;}
+    .cover-inner{gap:32px;}
+    .eyebrow{font-size:12px;margin-bottom:18px;flex-wrap:wrap;}
+    .cover h1{font-size:28px;line-height:1.24;}
+    .cover .sub{font-size:15px;margin-top:16px;}
+    .cover-card{padding:20px 20px;}
+    .cover-card .q{font-size:15px;}
+    .cover .meta{gap:24px;margin-top:40px;padding-top:20px;}
+    .cover .meta strong{font-size:14px;}
+    .cover-rings{width:420px;height:420px;}
+
+    section{padding:56px 0;}
+    h2{font-size:24px;max-width:none;}
+    p.lead{font-size:16px;}
+    p{font-size:14.5px;}
+    .section-label{font-size:12.5px;margin-bottom:12px;}
+
+    .diagram-wrap{padding:48px 0;}
+    .d-row{gap:14px;}
+    .d-box{width:100%;max-width:300px;padding:16px 18px;}
+    .d-box.hub{width:100%;max-width:300px;}
+    .d-connectors{flex-direction:column;align-items:center;gap:0;}
+    .d-spacer{display:none;}
+
+    .scen-col{padding:24px 22px;}
+    .deliv-item{padding:22px 20px;}
+    .addon{padding:22px 22px;}
+    .why-grid{gap:26px;}
+
+    .cta{padding:64px 24px;}
+    .cta h2{font-size:26px;}
+    .cta-panel{padding-left:0;border-left:none;border-top:1px solid rgba(255,255,255,0.2);padding-top:24px;}
+  }
+  @media(max-width:380px){
+    .cover h1{font-size:24px;}
+    .d-box.hub{padding:18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <svg class="cover-rings" viewBox="0 0 600 600" fill="none">
+    <circle cx="300" cy="300" r="290" stroke="#2F7A66" stroke-width="1"/>
+    <circle cx="300" cy="300" r="220" stroke="#2F7A66" stroke-width="1"/>
+    <circle cx="300" cy="300" r="150" stroke="#2F7A66" stroke-width="1"/>
+    <circle cx="300" cy="300" r="80" stroke="#2F7A66" stroke-width="1"/>
+  </svg>
+  <div class="cover-inner">
+    <div class="rise rise-1">
+      <div class="eyebrow"><span class="dash"></span>Prepared for Zenith Dentistry, by ValGrow Labs</div>
+      <h1>Your patients are already reaching out. The question is how many reach a booked seat.</h1>
+      <p class="sub">A proposal for a redesigned website and an AI-enabled booking system that turns every Meta ad inquiry into a managed appointment — automatically.</p>
+    </div>
+    <div class="cover-card rise rise-2">
+      <div class="q">"A spa-like environment that will make your next dental appointment unlike any other."</div>
+      <div class="attr">— Zenith Dentistry, on its own patient experience</div>
+    </div>
+  </div>
+  <div class="meta rise rise-3">
+    <div><strong>Zenith Dentistry</strong>Dehiwala, Colombo</div>
+    <div><strong>Founder</strong>Dr. Ahamed Fouzan, AAID &amp; WCLI Fellow</div>
+    <div><strong>Scope</strong>Website redesign + AI booking backend</div>
+  </div>
+</div>
+
+<section class="white">
+  <div class="wrap">
+    <div class="shell">
+      <div class="rail-num">01</div>
+      <div>
+        <div class="section-label">The situation today</div>
+        <h2>Every good lead still needs a human to notice it.</h2>
+        <p class="lead">Zenith runs Meta ads that bring genuinely interested people to WhatsApp. From there, the process is entirely manual: a receptionist reads each message, replies, qualifies interest, and — if the person is ready — manually places them into the booking system. One conversation at a time.</p>
+        <p>That's not a criticism of the team — it's simply what happens without a system built to carry that weight. And it shows up in a few specific ways:</p>
+
+        <div class="problem-list">
+          <div class="problem-item">
+            <div class="tag">After hours</div>
+            <div>
+              <h3>Inquiries wait for morning</h3>
+              <p>A message at 9pm — often the moment someone is deciding between clinics — sits unanswered until the clinic opens. Dental and cosmetic decisions are impulsive; the wait is where competitors get the booking instead.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <div class="tag">Two systems</div>
+            <div>
+              <h3>WhatsApp and the website don't talk to each other</h3>
+              <p>The website runs a separate third-party booking widget. WhatsApp bookings are entered manually. There's no single calendar of truth, which means real risk of double-booked slots and no easy way to see the full day at a glance.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <div class="tag">No visibility</div>
+            <div>
+              <h3>Ad spend and outcomes are disconnected</h3>
+              <p>There's no way to see, at a glance, which ads actually turn into booked, treated patients — so decisions about where to spend on Meta ads are made without the data that would make them easy.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <div class="tag">Capacity</div>
+            <div>
+              <h3>Growth is capped by one person's bandwidth</h3>
+              <p>However good the receptionist is, there's a ceiling on how many conversations one person can hold well at once. More ad spend just means more messages waiting in the same queue.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap">
+    <div class="shell">
+      <div class="rail-num">02</div>
+      <div>
+        <div class="section-label">The proposal</div>
+        <h2>One system, with two doors in.</h2>
+        <p class="lead">Instead of a new website that just looks better, we're proposing a redesigned website and a booking system built as one connected system — so a patient can reach Zenith through WhatsApp or the website, and either way, the outcome is the same: a confirmed slot on one shared calendar, visible to your team the moment it's booked.</p>
+
+        <div class="layers">
+          <div class="layer">
+            <div class="num">1</div>
+            <div>
+              <h3>A redesigned website</h3>
+              <p>Modern, minimal, and calm — matching the spa-like experience patients already get in person. It fully replaces the current third-party booking widget, with a native booking flow wired directly into the same backend as everything else.</p>
+            </div>
+          </div>
+          <div class="layer">
+            <div class="num">2</div>
+            <div>
+              <h3>An AI agent for WhatsApp and website chat</h3>
+              <p>Picks up every inquiry the moment it arrives, at any hour. It asks the right qualifying questions, checks real slot availability, proposes times, and confirms the booking — without a person needing to type a single reply.</p>
+              <ul>
+                <li>Reads the live calendar, so it never offers a slot that's already taken</li>
+                <li>Knows which service the patient is interested in and how long that treatment needs</li>
+                <li>Hands off to your receptionist for anything sensitive, complex, or outside its confidence — never a dead end</li>
+              </ul>
+            </div>
+          </div>
+          <div class="layer">
+            <div class="num">3</div>
+            <div>
+              <h3>A centralized backend</h3>
+              <p>One calendar, one source of truth, behind both doors. Your team gets a dashboard showing every booking — whether it came from the AI agent, the website, or was added manually for a walk-in — with doctor-wise schedules and treatment-wise slot durations already built in.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="diagram-wrap">
+  <div class="wide">
+    <div class="shell" style="margin-bottom:40px;">
+      <div class="rail-num">03</div>
+      <div>
+        <div class="section-label">How it works</div>
+        <h2 style="margin-bottom:0;">Two ways in, one calendar.</h2>
+      </div>
+    </div>
+    <div class="diagram">
+      <div class="d-row">
+        <div class="d-box accent-clay"><div class="t">WhatsApp inquiry</div><div class="s">From Meta ads</div></div>
+        <div class="d-box accent-clay"><div class="t">Website visitor</div><div class="s">Browsing services</div></div>
+      </div>
+      <div class="d-row d-connectors" style="margin-top:0;">
+        <div class="d-arrow"></div>
+        <div class="d-spacer" style="width:230px;"></div>
+        <div class="d-arrow"></div>
+      </div>
+      <div class="d-row">
+        <div class="d-box accent-teal"><div class="t">AI agent</div><div class="s">Qualifies and books the slot</div></div>
+        <div class="d-box accent-teal"><div class="t">Booking widget</div><div class="s">Self-service booking</div></div>
+      </div>
+      <div class="d-arrow" style="height:42px;"></div>
+      <div class="d-box hub"><div class="t">Centralized backend</div><div class="s">Live calendar, every booking</div></div>
+      <div class="d-arrow" style="height:42px;"></div>
+      <div class="d-box"><div class="t">Clinic dashboard</div><div class="s">Your team manages everything, in one place</div></div>
+    </div>
+    <p class="d-caption">Nothing gets double-booked, and nothing gets missed.</p>
+  </div>
+</div>
+
+<section class="white">
+  <div class="wrap">
+    <div class="shell">
+      <div class="rail-num">04</div>
+      <div>
+        <div class="section-label">What changes, in practice</div>
+        <h2>The same Tuesday, run two different ways.</h2>
+        <div class="scenario">
+          <div class="scen-col now">
+            <div class="kicker">Today</div>
+            <h3>The manual way</h3>
+            <ol>
+              <li>A patient messages on WhatsApp at 10:40pm asking about Invisalign pricing.</li>
+              <li>No one sees it until the clinic opens the next morning.</li>
+              <li>The receptionist replies, answers questions, and — if the patient is still interested — manually checks the calendar and books a slot.</li>
+              <li>Meanwhile, someone else books directly through the website widget, on a system the receptionist has to check separately.</li>
+            </ol>
+          </div>
+          <div class="scen-col after">
+            <div class="kicker">Proposed</div>
+            <h3>The connected way</h3>
+            <ol>
+              <li>The same patient messages at 10:40pm. The AI agent replies within seconds and answers their Invisalign questions.</li>
+              <li>It checks live availability and offers two open slots this week. The patient picks one — booked and confirmed before they've put their phone down.</li>
+              <li>The receptionist opens the dashboard the next morning and sees the booking already there, alongside every other booking from that week.</li>
+              <li>No re-entry. No double-booking. No lead lost to the overnight gap.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap">
+    <div class="shell">
+      <div class="rail-num">05</div>
+      <div>
+        <div class="section-label">What's included</div>
+        <h2>The full build.</h2>
+        <div class="deliv-grid">
+          <div class="deliv-item">
+            <h3>Website redesign</h3>
+            <p>Modern, minimal, mobile-first site covering services, doctor profiles, facilities, gallery, testimonials, and blog — matching Zenith's spa-like positioning.</p>
+          </div>
+          <div class="deliv-item">
+            <h3>Native booking flow</h3>
+            <p>Replaces the current jithya.com widget entirely, wired directly into the shared calendar so there's no separate system to reconcile.</p>
+          </div>
+          <div class="deliv-item">
+            <h3>WhatsApp AI agent</h3>
+            <p>Handles inbound inquiries end to end — qualifying, answering common questions, and booking directly into the live calendar.</p>
+          </div>
+          <div class="deliv-item">
+            <h3>Website chat agent</h3>
+            <p>The same AI, available on the website itself, for visitors who'd rather ask a question before booking.</p>
+          </div>
+          <div class="deliv-item">
+            <h3>Centralized calendar</h3>
+            <p>Doctor-wise schedules and treatment-wise slot durations, shared by every booking channel — no conflicts, no manual cross-checking.</p>
+          </div>
+          <div class="deliv-item">
+            <h3>Clinic dashboard</h3>
+            <p>One screen for your team to see, manage, and adjust every booking, plus a simple view of which ads are actually converting into booked patients.</p>
+          </div>
+        </div>
+
+        <div class="addon">
+          <div class="section-label">Optional, if you'd like it</div>
+          <h3>Instagram and Facebook Messenger</h3>
+          <p style="margin-bottom:0;">The same AI agent can be extended to handle Instagram and Facebook DMs on the same logic and the same calendar — useful if Meta ads are sending traffic to more than just WhatsApp. This can be added in a later phase without rebuilding anything.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="white">
+  <div class="wrap">
+    <div class="shell">
+      <div class="rail-num">06</div>
+      <div>
+        <div class="section-label">Why ValGrow Labs</div>
+        <h2>We build the whole system, not just the front door.</h2>
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>AI and automation, not just websites</h3>
+            <p>This isn't a redesign with a chatbot bolted on — the AI agent and booking backend are built as one system from the start.</p>
+          </div>
+          <div class="why-item">
+            <h3>Built around how the clinic actually runs</h3>
+            <p>Doctor schedules, treatment durations, and the existing patient journey shape the system, rather than forcing the clinic to adapt to generic software.</p>
+          </div>
+          <div class="why-item">
+            <h3>One team, start to finish</h3>
+            <p>Design, AI, and backend are handled under one roof, so nothing gets lost between a web agency and a separate developer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="cta-inner">
+    <div>
+      <div class="section-label" style="color:#8FC4AC;">Next step</div>
+      <h2>Let's walk through this together.</h2>
+      <p>Happy to go through the system live, answer questions from the team, and talk through a rollout that fits your timeline.</p>
+    </div>
+    <div class="cta-panel">
+      <strong>ValGrow Labs</strong>
+      <span>Reach out whenever you're ready to talk it through.</span>
+    </div>
+  </div>
+</div>
+
+<footer>Prepared by ValGrow Labs for Zenith Dentistry</footer>
+
+</body>
+</html>
