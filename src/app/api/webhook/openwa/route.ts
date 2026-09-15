@@ -118,7 +118,7 @@ export async function POST(request: Request) {
     // 3. Handle Tool Calls (Booking confirmation)
     if (responseMessage.tool_calls) {
       for (const toolCall of responseMessage.tool_calls) {
-        if (toolCall.function.name === 'confirm_booking') {
+        if (toolCall.type === 'function' && toolCall.function.name === 'confirm_booking') {
           const args = JSON.parse(toolCall.function.arguments);
           
           // Save to database
@@ -131,7 +131,6 @@ export async function POST(request: Request) {
           messages.push({
             role: 'tool',
             tool_call_id: toolCall.id,
-            name: toolCall.function.name,
             content: 'Booking successfully saved to database.'
           });
 
