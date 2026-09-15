@@ -11,6 +11,13 @@ export default function SettingsClient() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   
+  const [envFlags, setEnvFlags] = useState({
+    openAiApiKey: false,
+    openWaUrl: false,
+    openWaApiKey: false,
+    openWaSessionId: false,
+  });
+
   const [settings, setSettings] = useState({
     openWaUrl: '',
     openWaApiKey: '',
@@ -25,6 +32,9 @@ export default function SettingsClient() {
         const res = await fetch('/api/settings');
         if (res.ok) {
           const data = await res.json();
+          if (data._env) {
+            setEnvFlags(data._env);
+          }
           setSettings(prev => ({ ...prev, ...data }));
         }
       } catch (err) {
@@ -82,49 +92,61 @@ export default function SettingsClient() {
 
       <form onSubmit={handleSave} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">OpenWA URL</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            OpenWA URL {envFlags.openWaUrl && <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded ml-2">Configured via ENV</span>}
+          </label>
           <input
             type="url"
             name="openWaUrl"
             value={settings.openWaUrl}
             onChange={handleChange}
             placeholder="e.g. https://whatsapp-agent-o1zh.onrender.com"
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md disabled:bg-gray-100 disabled:text-gray-500"
+            disabled={envFlags.openWaUrl}
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">OpenWA Session ID</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            OpenWA Session ID {envFlags.openWaSessionId && <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded ml-2">Configured via ENV</span>}
+          </label>
           <input
             type="text"
             name="openWaSessionId"
             value={settings.openWaSessionId}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md disabled:bg-gray-100 disabled:text-gray-500"
+            disabled={envFlags.openWaSessionId}
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">OpenWA API Key</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            OpenWA API Key {envFlags.openWaApiKey && <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded ml-2">Configured via ENV</span>}
+          </label>
           <input
             type="password"
             name="openWaApiKey"
             value={settings.openWaApiKey}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md disabled:bg-gray-100 disabled:text-gray-500"
+            disabled={envFlags.openWaApiKey}
           />
         </div>
 
         <hr className="my-6" />
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">OpenAI API Key</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            OpenAI API Key {envFlags.openAiApiKey && <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded ml-2">Configured via ENV</span>}
+          </label>
           <input
             type="password"
             name="openAiApiKey"
             value={settings.openAiApiKey}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md disabled:bg-gray-100 disabled:text-gray-500"
+            disabled={envFlags.openAiApiKey}
           />
         </div>
 

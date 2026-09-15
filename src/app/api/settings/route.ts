@@ -16,10 +16,24 @@ export async function GET() {
   try {
     const stmt = db.prepare('SELECT key, value FROM Settings');
     const rows = stmt.all() as { key: string; value: string }[];
-    const settings = rows.reduce((acc, row) => {
+    const dbSettings = rows.reduce((acc, row) => {
       acc[row.key] = row.value;
       return acc;
     }, {} as Record<string, string>);
+
+    const settings = {
+      openAiApiKey: process.env.OPENAI || dbSettings.openAiApiKey || '',
+      openWaUrl: process.env.WAURL || dbSettings.openWaUrl || '',
+      openWaApiKey: process.env.WAAPI || dbSettings.openWaApiKey || '',
+      openWaSessionId: process.env.WASESSIONID || dbSettings.openWaSessionId || '',
+      aiSystemPrompt: dbSettings.aiSystemPrompt || '',
+      _env: {
+        openAiApiKey: !!process.env.OPENAI,
+        openWaUrl: !!process.env.WAURL,
+        openWaApiKey: !!process.env.WAAPI,
+        openWaSessionId: !!process.env.WASESSIONID,
+      }
+    };
 
     return NextResponse.json(settings);
   } catch (error) {
@@ -35,6 +49,8 @@ export async function POST(request: Request) {
 
   try {
     const data = await request.json();
+    // Remove the _env object before saving to the database
+    const { _env, ...settingsToSave } = data;
     const insertStmt = db.prepare('INSERT INTO Settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value=excluded.value');
     
     const transaction = db.transaction((settings: Record<string, string>) => {
@@ -43,7 +59,7 @@ export async function POST(request: Request) {
       }
     });
 
-    transaction(data);
+    transaction(settingsToSave);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error saving settings:', error);

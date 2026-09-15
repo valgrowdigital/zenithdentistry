@@ -57,7 +57,15 @@ export async function POST(request: Request) {
     const senderNumber = msg.from;
     const userText = msg.body;
 
-    const settings = getSettings();
+    const dbSettings = getSettings();
+    const settings = {
+      openAiApiKey: process.env.OPENAI || dbSettings.openAiApiKey,
+      openWaUrl: process.env.WAURL || dbSettings.openWaUrl,
+      openWaApiKey: process.env.WAAPI || dbSettings.openWaApiKey,
+      openWaSessionId: process.env.WASESSIONID || dbSettings.openWaSessionId,
+      aiSystemPrompt: dbSettings.aiSystemPrompt,
+    };
+
     if (!settings.openAiApiKey) {
       console.error('OpenAI API Key not configured');
       return NextResponse.json({ success: false, message: 'OpenAI not configured' }, { status: 500 });
